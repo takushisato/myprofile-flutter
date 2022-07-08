@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -6,6 +7,16 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  final String mailAddress = 'flutter.database@gmail.com';
+  final String mailTitle = '件名です';
+  final String mailContents = 'メール本文です';
+
+  Future<void> launchURL(String url) async {
+    if (!await launchUrl(Uri.parse(url))){
+      throw '${url}が立ち上がりません';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +33,13 @@ class MyApp extends StatelessWidget {
               const Text('Emily Shibuya'),
               Row(children: [const Text("所属"), const Text("会社")]),
               Row(children: [const Text("電話"), const Text("090-1111-2222")]),
-              Row(children: [const Text("メール"), const Text("eeeee@eeeee.jp")]),
+              Row(
+                  children: [
+                    Text("メール"),
+                    Text("eeeee@eeeee.jp"),
+                    TextButton(onPressed: () async {
+                      launchURL('mailto: ${mailAddress}?subject=${mailTitle}&body=${mailContents}');
+                    }, child: Icon(Icons.mail))]),
               Row(children: [const Text("HP"), const Text("Https://.....")]),
             ],
           ),
