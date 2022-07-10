@@ -26,21 +26,47 @@ class MyApp extends StatelessWidget {
           title: const Text('My Profile'),
           centerTitle: true,
         ),
-        body: Center(
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/icon.png', height: 200,),
-              const Text('Emily Shibuya'),
-              Row(children: [const Text("所属"), const Text("会社")]),
-              Row(children: [const Text("電話"), const Text("090-1111-2222")]),
-              Row(
-                  children: [
-                    Text("メール"),
-                    Text("eeeee@eeeee.jp"),
+              const Text('Emily Shibuya', style: TextStyle(fontSize: 30),),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    children: [const Text("所属会社：", style: TextStyle(fontWeight: FontWeight.bold),), const Text("ほんにゃら産業株式会社")]),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    children: [const Text("電話：", style: TextStyle(fontWeight: FontWeight.bold),), const Text("090-1111-2222")]),
+
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    const Text("メール："),
+                    const Text("eeeee@eeeee.jp"),
                     TextButton(onPressed: () async {
                       launchURL('mailto: ${mailAddress}?subject=${mailTitle}&body=${mailContents}');
-                    }, child: Icon(Icons.mail))]),
-              Row(children: [const Text("HP"), const Text("Https://.....")]),
+                    }, child: Icon(Icons.mail))])),
+              Padding
+                (padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("HP："),
+                      const Text("Https://hogehoge.com"),
+                    TextButton(onPressed: () async {
+
+                    }, child: Icon(Icons.web))]),
+              ),
             ],
           ),
         ),
