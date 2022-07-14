@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:share_plus/share_plus.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          actions: [TextButton(onPressed: () {}, child: Icon(Icons.share, color: Colors.white,))],
           title: const Text('My Profile'),
           centerTitle: true,
         ),
